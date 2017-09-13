@@ -19,6 +19,7 @@
 		
 	<script type="text/javascript">
 		var soundID = "yougotme";
+		var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 		function goToAnchor() {
             var dHeight = Math.max(
                 Math.max(document.body.scrollHeight, document.documentElement.scrollHeight),
@@ -28,12 +29,18 @@
 			window.scrollTo(0, dHeight);
 			//location.href = "/priyaanddeepak#start";
 		}
-		createjs.Sound.addEventListener("fileload", createjs.proxy(this.handleLoad, this));
+		createjs.Sound.addEventListener("fileload", createjs.proxy(this.playSound, this));
 		createjs.Sound.registerSound("assets/YouGotMe.mp3", "soundID");
-		function handleLoad() {
-			 createjs.Sound.play("soundID");
+		function playSound() {
+			if(iOS){
+				document.addEventListener('touchmove', function(e) {
+					e.preventDefault();
+					playSound();
+				}, false);
+			}else {
+				createjs.Sound.play("soundID");
+			}
 		}
-
 
 	</script>
 
