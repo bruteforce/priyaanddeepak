@@ -14,6 +14,13 @@
 	<link rel="icon" href="assets/favicon.gif" type="image/x-icon">
 	<link rel="stylesheet" href="assets/style.css" type="text/css" media="screen">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+	<script>
+		createjs.Sound.registerSound("assets/YouGotMe.mp3", "x");
+		setTimeout(function () {
+			createjs.Sound.play("x");
+		}, 1000)
+	</script>
 
 		
 	<script type="text/javascript">
@@ -107,11 +114,6 @@
 	<div id="t_sittin"></div>
 
 	<div id="bottom"><a name="start"></a></div>
-	<div id="player">
-		<audio autoplay hidden volume="5">
-			<source src="assets/YouGotMe.mp3" type="audio/mpeg">
-		</audio>
-	</div>
 
 </div><!--container-->
 	</body>
