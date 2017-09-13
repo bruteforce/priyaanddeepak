@@ -14,16 +14,11 @@
 	<link rel="icon" href="assets/favicon.gif" type="image/x-icon">
 	<link rel="stylesheet" href="assets/style.css" type="text/css" media="screen">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="assets/createjs.js"></script>
-	<script>
-		createjs.Sound.registerSound("assets/YouGotMe.mp3", "x");
-		setTimeout(function () {
-			createjs.Sound.play("x");
-		}, 3000)
-	</script>
+	<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
 
 		
 	<script type="text/javascript">
+		var soundID = "yougotme";
 		function goToAnchor() {
             var dHeight = Math.max(
                 Math.max(document.body.scrollHeight, document.documentElement.scrollHeight),
@@ -33,6 +28,13 @@
 			window.scrollTo(0, dHeight);
 			//location.href = "/priyaanddeepak#start";
 		}
+		createjs.Sound.addEventListener("fileload", createjs.proxy(this.handleLoad, this));
+		createjs.Sound.registerSound("assets/YouGotMe.mp3", "soundID");
+		function handleLoad() {
+			 createjs.Sound.play("soundID");
+		}
+
+
 	</script>
 
 </head>
