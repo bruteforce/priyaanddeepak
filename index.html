@@ -20,6 +20,7 @@
 	<script type="text/javascript">
 		var soundID = "yougotme";
 		var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+		var played = false;
 		function goToAnchor() {
             var dHeight = Math.max(
                 Math.max(document.body.scrollHeight, document.documentElement.scrollHeight),
@@ -32,13 +33,16 @@
 		createjs.Sound.addEventListener("fileload", createjs.proxy(this.playSound, this));
 		createjs.Sound.registerSound("assets/YouGotMe.mp3", "soundID");
 		function playSound() {
-			if(iOS){
-				document.addEventListener('touchmove', function(e) {
-					e.preventDefault();
-					playSound();
-				}, false);
-			}else {
-				createjs.Sound.play("soundID");
+			if(!played) {
+				if (iOS) {
+					document.addEventListener('touchmove', function (e) {
+						e.preventDefault();
+						createjs.Sound.play("soundID");
+					}, false);
+				} else {
+					createjs.Sound.play("soundID");
+				}
+				played = true;
 			}
 		}
 
