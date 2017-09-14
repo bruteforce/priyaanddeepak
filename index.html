@@ -31,16 +31,16 @@
 			//location.href = "/priyaanddeepak#start";
 		}
 		createjs.Sound.addEventListener("fileload", createjs.proxy(this.playSound, this));
-		createjs.Sound.registerSound("assets/YouGotMeSmall.mp3", "soundID");
+		createjs.Sound.registerSound("assets/YouGotMeSmallTrim.mp3", "soundID");
 		function playSound() {
 			if(!played) {
 				if (iOS) {
 					document.addEventListener('touchmove', function (e) {
 						e.preventDefault();
-						createjs.Sound.play("soundID");
+						createjs.Sound.play("soundID").volume = 0.5;
 					}, false);
 				} else {
-					createjs.Sound.play("soundID");
+					createjs.Sound.play("soundID").volume = 0.5;
 				}
 				played = true;
 			}
