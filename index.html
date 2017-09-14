@@ -18,6 +18,7 @@
 
 		
 	<script type="text/javascript">
+		jQuery("#container").hide();
 		var soundID = "yougotme";
 		var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 		var played = false;
@@ -28,6 +29,7 @@
                 Math.max(document.body.clientHeight, document.documentElement.clientHeight)
             );
 			window.scrollTo(0, dHeight);
+			jQuery("#container").show();
 			//location.href = "/priyaanddeepak#start";
 		}
 		createjs.Sound.addEventListener("fileload", createjs.proxy(this.playSound, this));
